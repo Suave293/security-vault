@@ -1,3 +1,16 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    display: none;
+}
+
 body {
     background-color: #081425;
     background-image: url("https://lh3.googleusercontent.com/aida/AP1WRLvWyBFUQxXZ74aaJdbi3aYo9_mY1NXI8qDD46coi1l5uU1D6wjopTB1lllqi4QzYhvvNVK-GgfZRny6MwycaYUyAcQG_EbrUlo8t0pCxuZsk_nc7kg7v-ZBDwwLPDb-biQIp8YdRmEKMUgXUKi4w2eVZs5iWEDAxFOPaHFVC6QScmoXfIMJQiQ7tUiRG6UvzabAY1f9gdB9KcLi7FOsdqogWWkCInJwbt3Ahp2ObZarR3tFMxnrYw1k8sZz"); 
