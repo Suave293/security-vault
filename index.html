@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Suave | Password Generator</title>
+    
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#798098",
+                        "tertiary": "#ffb95f",
+                        "outline-variant": "#45464d",
+                        "primary-fixed": "#dae2fd",
+                        "primary": "#bec6e0",
+                        "secondary-container": "#00a572",
+                        "surface-variant": "#2a3548",
+                        "surface-bright": "#2f3a4c",
+                        "on-secondary-fixed-variant": "#005236",
+                        "secondary-fixed": "#6ffbbe",
+                        "inverse-primary": "#565e74",
+                        "secondary": "#4edea3",
+                        "surface-tint": "#bec6e0",
+                        "secondary-fixed-dim": "#4edea3",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "surface-dim": "#081425",
+                        "inverse-surface": "#d8e3fb",
+                        "outline": "#909097",
+                        "on-tertiary": "#472a00",
+                        "on-surface-variant": "#c6c6cd",
+                        "error": "#ffb4ab",
+                        "on-tertiary-container": "#b47300",
+                        "on-error": "#690005",
+                        "on-primary": "#283044",
+                        "on-tertiary-fixed": "#2a1700",
+                        "surface-container-high": "#1f2a3c",
+                        "on-secondary": "#003824",
+                        "on-secondary-container": "#00311f",
+                        "surface-container-lowest": "#040e1f",
+                        "on-secondary-fixed": "#002113",
+                        "tertiary-container": "#251400",
+                        "error-container": "#93000a",
+                        "on-surface": "#d8e3fb",
+                        "tertiary-fixed": "#ffddb8",
+                        "background": "#081425",
+                        "surface": "#081425",
+                        "inverse-on-surface": "#263143",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "surface-container-highest": "#2a3548",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-background": "#d8e3fb",
+                        "surface-container-low": "#111c2d",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "primary-container": "#0f172a",
+                        "on-primary-fixed": "#131b2e",
+                        "surface-container": "#152031",
+                        "on-error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "gutter": "20px",
+                        "md": "16px",
+                        "container-max": "1200px",
+                        "lg": "24px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "sm": "12px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "code-sm": ["JetBrains Mono"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "headline-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["26px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "code-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "label-md": ["13px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="flex min-h-screen bg-background h-screen overflow-hidden">
+    <aside class="fixed left-0 top-0 bottom-0 flex flex-col p-md w-[260px] h-full bg-surface-container border-r border-outline-variant z-50">
+        <div class="mb-xl px-sm">
+            <h1 class="font-headline-md text-headline-md font-bold text-on-surface">Sentinel</h1>
+            <p class="font-body-md text-body-md text-on-primary-container">Secure Vault</p>
+        </div>
+        <nav class="flex-1 space-y-xs">
+            <a class="flex items-center gap-md p-md font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-95 duration-100" href="#">
+                <span class="material-symbols-outlined">lock</span>
+                <span class="">Vault</span>
+            </a>
+            <a class="flex items-center gap-md p-md font-body-md text-body-md text-secondary font-bold bg-surface-container-highest rounded-lg active:scale-95 duration-100" href="#">
+                <span class="material-symbols-outlined">password</span>
+                <span class="">Generator</span>
+            </a>
+            <a class="flex items-center gap-md p-md font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-95 duration-100" href="#">
+                <span class="material-symbols-outlined">build</span>
+                <span class="">Tools</span>
+            </a>
+            <a class="flex items-center gap-md p-md font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-95 duration-100" href="#">
+                <span class="material-symbols-outlined">settings</span>
+                <span class="">Settings</span>
+            </a>
+        </nav>
+        <div class="mt-auto border-t border-outline-variant pt-md px-sm flex items-center gap-md">
+            <div class="w-10 h-10 bg-surface-container-highest rounded-full flex items-center justify-center border border-outline-variant overflow-hidden">
+                <img alt="User profile" class="w-full h-full object-cover" data-alt="Cyber expert visual blueprint" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtG-8wYXuVBC6pbG6LHxR2Yt96iBneoXq8vyxFTmggfLLvfCOr1nozWW7esvibZ74__AppE9cugXxNtc5xaDTyEMSb0xoZog22wIUZaPZz8Ky5uIXeygJQfjZV-f9mPvtPDNYc809DzzqDY-2AM2LaT-ykQDkZttUy8Gf_QCQ_gGCrQfiwyBx9tGT6NV26Y4hYdZ3HeMAP0gSOkBE0Ee-zjS2TQmpDFx9gbLuYpon6zVsSGMlHFjaf6mHZA0oF0Gf-rOpDenGD_ysZ">
+            </div>
+            <div>
+                <p class="font-label-md text-label-md text-on-surface">Admin</p>
+                <p class="font-code-sm text-code-sm text-on-surface-variant">Level 4 Clearance</p>
+            </div>
+        </div>
+    </aside>
+
+    <main class="ml-[260px] flex-1 min-h-screen bg-surface/80 backdrop-blur-sm h-screen flex flex-col overflow-hidden">
+        <header class="flex justify-between items-center h-16 px-xl bg-background border-b border-outline-variant sticky top-0 z-40">
+            <div class="flex items-center gap-md flex-1">
+                <div class="relative w-full max-w-md">
+                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+                    <input class="w-full bg-surface-container-low border border-outline-variant rounded-lg py-2 pl-10 pr-4 font-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary/50" placeholder="Search entries..." type="text">
+                </div>
+            </div>
+            <div class="flex items-center gap-lg">
+                <button class="text-on-surface-variant hover:text-secondary transition-all duration-200">
+                    <span class="material-symbols-outlined">sync</span>
+                </button>
+                <button class="text-on-surface-variant hover:text-secondary transition-all duration-200 relative">
+                    <span class="material-symbols-outlined">notifications</span>
+                    <span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full"></span>
+                </button>
+            </div>
+        </header>
+
+        <section class="max-w-container-max mx-auto p-xl flex-1 overflow-auto flex flex-col justify-center py-lg">
+            <div class="flex justify-between items-end mb-md">
+                <div>
+                    <h2 class="font-headline-lg text-headline-lg text-on-surface">Password Generator</h2>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant">Create cryptographically strong credentials for your digital vault.</p>
+                </div>
+                <div class="flex items-center gap-sm bg-surface-container border border-outline-variant px-md py-sm rounded-lg">
+                    <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+                    <span class="font-code-sm text-code-sm text-on-secondary-fixed uppercase tracking-wider">AES-256 Protocol</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+                <div class="lg:col-span-8 flex flex-col gap-gutter">
+                    <div class="bg-surface-container-high border border-outline-variant rounded-xl p-xl flex flex-col items-center justify-center relative overflow-hidden group">
+                        <div class="z-10 w-full text-center mb-lg">
+                            <div class="font-code-sm text-4xl md:text-5xl lg:text-6xl text-secondary break-all tracking-tighter transition-all duration-300 min-h-[1.5em] flex items-center justify-center" id="password-display">I[MR,1(RU2U%zE/QkE#Z$3-*]b*YA%Cr</div>
+                        </div>
+                        <div class="z-10 flex gap-md">
+                            <button class="flex items-center gap-sm bg-surface-container border border-outline-variant px-lg py-md rounded-lg font-body-md text-on-surface hover:bg-surface-container-highest transition-all active:scale-95" id="refresh-btn">
+                                <span class="material-symbols-outlined">refresh</span>
+                                Regenerate
+                            </button>
+                            <button class="flex items-center gap-sm bg-secondary text-on-secondary px-xl py-md rounded-lg font-body-md font-bold hover:brightness-110 transition-all active:scale-95 shadow-lg shadow-secondary/10" id="copy-btn">
+                                <span class="material-symbols-outlined">content_copy</span>
+                                Copy Secret
+                            </button>
+                        </div>
+                        <div class="z-10 w-full mt-xl flex flex-col gap-xs">
+                            <div class="flex justify-between font-code-sm text-code-sm mb-1 px-1">
+                                <span class="text-on-surface-variant">Security Strength</span>
+                                <span class="text-secondary uppercase" id="strength-label">Highly Secure</span>
+                            </div>
+                            <div class="flex gap-1 h-2">
+                                <div class="strength-segment flex-1 rounded-sm bg-secondary"></div>
+                                <div class="strength-segment flex-1 rounded-sm bg-secondary"></div>
+                                <div class="strength-segment flex-1 rounded-sm bg-secondary"></div>
+                                <div class="strength-segment flex-1 rounded-sm bg-secondary"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-surface-container border border-outline-variant p-lg rounded-xl flex items-center justify-between">
+                        <div class="flex items-center gap-md">
+                            <div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center">
+                                <span class="material-symbols-outlined text-primary">add_moderator</span>
+                            </div>
+                            <div>
+                                <h4 class="font-body-lg text-body-lg font-bold text-on-surface">Finalize Security</h4>
+                                <p class="font-body-md text-body-md text-on-surface-variant">Store this password directly into your encrypted vault.</p>
+                            </div>
+                        </div>
+                        <button class="bg-primary text-on-primary px-xl py-md rounded-lg font-body-md font-bold hover:brightness-110 transition-all active:scale-95">
+                            Use this Password
+                        </button>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-4 bg-surface-container border border-outline-variant rounded-xl p-lg flex flex-col gap-lg">
+                    <h3 class="font-headline-sm text-headline-sm text-on-surface border-b border-outline-variant pb-md">Configurations</h3>
+                    <div class="flex flex-col gap-sm">
+                        <label class="font-label-md text-label-md text-on-surface uppercase tracking-wider">Name</label>
+                        <input class="w-full bg-surface-container-low border border-outline-variant rounded-lg py-2 px-3 font-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary/50" id="name-input" placeholder="Enter a name" type="text" value="Kelvin">
+                    </div>
+                    <div class="flex flex-col gap-sm">
+                        <label class="font-label-md text-label-md text-on-surface uppercase tracking-wider">Extra Characters</label>
+                        <select class="w-full bg-surface-container-low border border-outline-variant rounded-lg py-2 px-3 font-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary/50" id="extra-count">
+                            <option value="3">3 characters</option>
+                            <option value="4" selected>4 characters</option>
+                        </select>
+                    </div>
+                    <div class="flex flex-col gap-md">
+                        <div class="flex justify-between items-center">
+                            <label class="font-label-md text-label-md text-on-surface uppercase tracking-wider">Length</label>
+                            <span class="font-code-sm text-secondary text-lg font-bold" id="length-val">32</span>
+                        </div>
+                        <input class="w-full h-1 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-secondary" id="length-slider" max="64" min="8" type="range" value="32">
+                        <div class="flex justify-between font-code-sm text-code-sm text-on-surface-variant">
+                            <span>8</span>
+                            <span>64</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-sm">
+                        <label class="font-label-md text-label-md text-on-surface uppercase tracking-wider mb-2">Complexity Parameters</label>
+                        <div class="flex items-center justify-between p-md bg-surface-container-low border border-outline-variant rounded-lg hover:border-secondary/30 transition-colors">
+                            <span class="font-body-md text-on-surface">Uppercase (A-Z)</span>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input checked class="sr-only custom-toggle" id="upper-toggle" type="checkbox">
+                                <div class="toggle-track w-12 h-6 bg-surface-container-highest rounded-full transition-colors flex items-center px-1">
+                                    <div class="toggle-knob w-4 h-4 bg-on-surface-variant rounded-full transition-transform"></div>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="flex items-center justify-between p-md bg-surface-container-low border border-outline-variant rounded-lg hover:border-secondary/30 transition-colors">
+                            <span class="font-body-md text-on-surface">Lowercase (a-z)</span>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input checked class="sr-only custom-toggle" id="lower-toggle" type="checkbox">
+                                <div class="toggle-track w-12 h-6 bg-surface-container-highest rounded-full transition-colors flex items-center px-1">
+                                    <div class="toggle-knob w-4 h-4 bg-on-surface-variant rounded-full transition-transform"></div>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="flex items-center justify-between p-md bg-surface-container-low border border-outline-variant rounded-lg hover:border-secondary/30 transition-colors">
+                            <span class="font-body-md text-on-surface">Numbers (0-9)</span>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input checked class="sr-only custom-toggle" id="num-toggle" type="checkbox">
+                                <div class="toggle-track w-12 h-6 bg-surface-container-highest rounded-full transition-colors flex items-center px-1">
+                                    <div class="toggle-knob w-4 h-4 bg-on-surface-variant rounded-full transition-transform"></div>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="flex items-center justify-between p-md bg-surface-container-low border border-outline-variant rounded-lg hover:border-secondary/30 transition-colors">
+                            <span class="font-body-md text-on-surface">Symbols (!@#$)</span>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input checked class="sr-only custom-toggle" id="sym-toggle" type="checkbox">
+                                <div class="toggle-track w-12 h-6 bg-surface-container-highest rounded-full transition-colors flex items-center px-1">
+                                    <div class="toggle-knob w-4 h-4 bg-on-surface-variant rounded-full transition-transform"></div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="mt-auto">
+                        <label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider block mb-3">Security Presets</label>
+                        <div class="grid grid-cols-2 gap-sm">
+                            <button class="p-sm text-center border border-outline-variant rounded hover:bg-surface-container-high font-code-sm text-code-sm">LEGACY (8)</button>
+                            <button class="p-sm text-center border border-outline-variant rounded bg-surface-container-highest font-code-sm text-code-sm text-secondary">QUANTUM (64)</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mt-lg">
+                <div class="bg-surface-container-low border border-outline-variant p-lg rounded-xl">
+                    <span class="material-symbols-outlined text-tertiary mb-md">history</span>
+                    <h5 class="font-body-lg font-bold text-on-surface mb-xs">No Storage Policy</h5>
+                    <p class="font-body-md text-on-surface-variant">Generated passwords are ephemeral and never stored on our servers until you explicitly save them to your vault.</p>
+                </div>
+                <div class="bg-surface-container-low border border-outline-variant p-lg rounded-xl">
+                    <span class="material-symbols-outlined text-secondary mb-md">casino</span>
+                    <h5 class="font-body-lg font-bold text-on-surface mb-xs">True Entropy</h5>
+                    <p class="font-body-md text-on-surface-variant">Utilizing hardware-backed random number generation for high-entropy secrets that resist brute-force attempts.</p>
+                </div>
+                <div class="bg-surface-container-low border border-outline-variant p-lg rounded-xl">
+                    <span class="material-symbols-outlined text-primary mb-md">visibility_off</span>
+                    <h5 class="font-body-lg font-bold text-on-surface mb-xs">End-to-End Privacy</h5>
+                    <p class="font-body-md text-on-surface-variant">The generation process occurs locally in your browser sandbox, ensuring zero leakage of your sensitive credentials.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
